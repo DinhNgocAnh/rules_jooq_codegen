@@ -40,8 +40,8 @@ public class JooqCodegen2 {
         container.start();
 
         MysqlDataSource dataSource = new MysqlDataSource();
-        dataSource.setServerName(container.getHost());
-        dataSource.setPort(container.getFirstMappedPort());
+        dataSource.setServerName("gimo-edge-mysql-db.ckbb5jqbkwy9.ap-southeast-1.rds.amazonaws.com");
+        dataSource.setPort(3306);
         dataSource.setUser("root");
         dataSource.setPassword("test");
         dataSource.setDatabaseName(container.getDatabaseName());
