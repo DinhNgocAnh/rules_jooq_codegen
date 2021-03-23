@@ -50,12 +50,12 @@ public class JooqCodegen2 {
         Database database = DatabaseFactory.getInstance()
                 .findCorrectDatabaseImplementation(new JdbcConnection(connection));
 
-        Liquibase liquibase = new Liquibase(
-                changeLogMasterPath, // "/migration/db.changelog-master.xml"
-                new ClassLoaderResourceAccessor(),
-                database);
+//         Liquibase liquibase = new Liquibase(
+//                 changeLogMasterPath, // "/migration/db.changelog-master.xml"
+//                 new ClassLoaderResourceAccessor(),
+//                 database);
 
-        liquibase.update(new Contexts());
+//         liquibase.update(new Contexts());
 
         Path path = Files.createTempDirectory("jooq_codegen");
         try (FileInputStream file = new FileInputStream(codeGenConfigXmlPath)) {
