@@ -33,18 +33,18 @@ public class JooqCodegen2 {
         String rootUser = "root";
         String rootPassword = "test";
 
-        JdbcDatabaseContainer container =
-                (JdbcDatabaseContainer) new MySQLContainer(mysqlDockerImage)
-                .withDatabaseName(databaseName)
-                .withEnv("MYSQL_ROOT_PASSWORD", rootPassword);
-        container.start();
+//         JdbcDatabaseContainer container =
+//                 (JdbcDatabaseContainer) new MySQLContainer(mysqlDockerImage)
+//                 .withDatabaseName(databaseName)
+//                 .withEnv("MYSQL_ROOT_PASSWORD", rootPassword);
+//         container.start();
 
         MysqlDataSource dataSource = new MysqlDataSource();
         dataSource.setServerName("gimo-edge-mysql-db.ckbb5jqbkwy9.ap-southeast-1.rds.amazonaws.com");
         dataSource.setPort(3306);
         dataSource.setUser("root");
         dataSource.setPassword("test");
-        dataSource.setDatabaseName(container.getDatabaseName());
+        dataSource.setDatabaseName("gimo");
 
         Connection connection = dataSource.getConnection();
         Database database = DatabaseFactory.getInstance()
@@ -67,7 +67,7 @@ public class JooqCodegen2 {
 
             configuration.setJdbc(new Jdbc()
                     .withDriver("com.mysql.cj.jdbc.Driver")
-                    .withUrl(container.getJdbcUrl())
+                    .withUrl("jdbc:mysql://gimo-edge-mysql-db.ckbb5jqbkwy9.ap-southeast-1.rds.amazonaws.com:3306/gimo")
                     .withUser(rootUser)
                     .withPassword(rootPassword));
 
